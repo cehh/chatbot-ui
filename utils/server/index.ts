@@ -93,17 +93,25 @@ export const OpenAIStream = async (
         if (event.type === 'event') {
           const data = event.data;
 
-          try {
-            const json = JSON.parse(data);
-            if (json.choices[0].finish_reason != null) {
-              controller.close();
-              return;
+          if (data !== '[DONE]') {
+            try {
+              const json = JSON.parse(data);
+              // 3.5 models
+              if (json.choices[0].finish_reason != null) {
+                controller.close();
+                return;
+              }
+              // 4.0 models
+              if (json.choices[0].finish_details != null) {
+                controller.close();
+                return;
+              }
+              const text = json.choices[0].delta.content;
+              const queue = encoder.encode(text);
+              controller.enqueue(queue);
+            } catch (e) {
+              controller.error(e);
             }
-            const text = json.choices[0].delta.content;
-            const queue = encoder.encode(text);
-            controller.enqueue(queue);
-          } catch (e) {
-            controller.error(e);
           }
         }
       };
