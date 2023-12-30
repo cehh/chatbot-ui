@@ -20,7 +20,7 @@ const handler = async (req: Request): Promise<Response> => {
     const response = await fetch(url, {
       headers: {
         'Content-Type': 'application/json',
-        ...(OPENAI_API_TYPE === 'openai' && {
+        ...((OPENAI_API_TYPE === 'openai' && (key || process.env.OPENAI_API_KEY)) && {
           Authorization: `Bearer ${key ? key : process.env.OPENAI_API_KEY}`
         }),
         ...((OPENAI_API_TYPE === 'openai' && APIGW_KEY) && {
