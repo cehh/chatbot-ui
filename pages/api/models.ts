@@ -1,4 +1,4 @@
-import { OPENAI_API_HOST, OPENAI_API_TYPE, OPENAI_API_VERSION, OPENAI_ORGANIZATION } from '@/utils/app/const';
+import { OPENAI_API_HOST, OPENAI_API_TYPE, OPENAI_API_VERSION, OPENAI_ORGANIZATION, APIGW_KEY } from '@/utils/app/const';
 
 import { OpenAIModel, OpenAIModelID, OpenAIModels } from '@/types/openai';
 
@@ -22,6 +22,9 @@ const handler = async (req: Request): Promise<Response> => {
         'Content-Type': 'application/json',
         ...(OPENAI_API_TYPE === 'openai' && {
           Authorization: `Bearer ${key ? key : process.env.OPENAI_API_KEY}`
+        }),
+        ...((OPENAI_API_TYPE === 'openai' && APIGW_KEY) && {
+          'x-api-key': APIGW_KEY,
         }),
         ...(OPENAI_API_TYPE === 'azure' && {
           'api-key': `${key ? key : process.env.OPENAI_API_KEY}`

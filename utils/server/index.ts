@@ -1,7 +1,7 @@
 import { Message } from '@/types/chat';
 import { OpenAIModel } from '@/types/openai';
 
-import { AZURE_DEPLOYMENT_ID, OPENAI_API_HOST, OPENAI_API_TYPE, OPENAI_API_VERSION, OPENAI_ORGANIZATION } from '../app/const';
+import { AZURE_DEPLOYMENT_ID, OPENAI_API_HOST, OPENAI_API_TYPE, OPENAI_API_VERSION, OPENAI_ORGANIZATION, APIGW_KEY } from '../app/const';
 
 import {
   ParsedEvent,
@@ -45,6 +45,9 @@ export const OpenAIStream = async (
       }),
       ...((OPENAI_API_TYPE === 'openai' && OPENAI_ORGANIZATION) && {
         'OpenAI-Organization': OPENAI_ORGANIZATION,
+      }),
+      ...((OPENAI_API_TYPE === 'openai' && APIGW_KEY) && {
+        'x-api-key': APIGW_KEY,
       }),
     },
     method: 'POST',

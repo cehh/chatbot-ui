@@ -82,6 +82,8 @@ OPENAI_API_KEY=YOUR_KEY
 
 > Additionally, if you have multiple OpenAI Organizations, you can set `OPENAI_ORGANIZATION` to specify one.
 
+> Finally, if you have a proxy server that uses an api key, you can set `APIGW_KEY` to specify one.
+
 **4. Run App**
 
 ```bash
@@ -104,6 +106,7 @@ When deploying the application, the following environment variables can be set:
 | OPENAI_API_VERSION                | `2023-03-15-preview`           | Only applicable for Azure OpenAI                                                                                                          |
 | AZURE_DEPLOYMENT_ID               |                                | Needed when Azure OpenAI, Ref [Azure OpenAI API](https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/reference#completions) |
 | OPENAI_ORGANIZATION               |                                | Your OpenAI organization ID                                                                                                               |
+| APIGW_KEY               |                                | Your Proxy server API Key                                                                                                                |
 | DEFAULT_MODEL                     | `gpt-3.5-turbo`                | The default model to use on new conversations, for Azure use `gpt-35-turbo`                                                               |
 | NEXT_PUBLIC_DEFAULT_SYSTEM_PROMPT | [see here](utils/app/const.ts) | The default system prompt to use on new conversations                                                                                     |
 | NEXT_PUBLIC_DEFAULT_TEMPERATURE   | 1                              | The default temperature to use on new conversations                                                                                       |

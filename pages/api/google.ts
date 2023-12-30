@@ -119,6 +119,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<any>) => {
         ...(process.env.OPENAI_ORGANIZATION && {
           'OpenAI-Organization': process.env.OPENAI_ORGANIZATION,
         }),
+        ...(process.env.APIGW_KEY && {
+          'x-api-key': process.env.APIGW_KEY,
+        }),
       },
       method: 'POST',
       body: JSON.stringify({
