@@ -1,59 +1,18 @@
 # Chatbot UI
 
-## News
-
-Chatbot UI 2.0 will launch on January 3rd, 2024.
-
-See a [preview](https://x.com/mckaywrigley/status/1738273242283151777?s=20).
-
-This repo will be completely overhauled with the updated codebase.
-
-The old codebase will be available in a new repo.
-
-There will be several hours of downtime on ChatbotUI.com while the new version is deployed.
-
-We recommend exporting your data before the update!
-
 ## About
 
-Chatbot UI is an open source chat UI for AI models.
+Chatbot UI is an open source chat UI for AI models forked from github mckaywrigley/chatbot-ui
+This is a POC project to initially validate usage of AI LLMs to generate automated tests
 
-See a [demo](https://twitter.com/mckaywrigley/status/1640380021423603713?s=46&t=AowqkodyK6B4JccSOxSPew).
-
-![Chatbot UI](./public/screenshots/screenshot-0402023.jpg)
-
-## Updates
-
-Chatbot UI will be updated over time.
-
-Expect frequent improvements.
-
-**Next up:**
-
-- [ ] Sharing
-- [ ] "Bots"
-
-## Deploy
-
-**Vercel**
-
-Host your own live version of Chatbot UI with Vercel.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmckaywrigley%2Fchatbot-ui)
 
 **Docker**
 
 Build locally:
 
 ```shell
-docker build -t chatgpt-ui .
-docker run -e OPENAI_API_KEY=xxxxxxxx -p 3000:3000 chatgpt-ui
-```
-
-Pull from ghcr:
-
-```
-docker run -e OPENAI_API_KEY=xxxxxxxx -p 3000:3000 ghcr.io/mckaywrigley/chatbot-ui:main
+docker build -t chatbot-ui .
+docker run -e APIGW_KEY="your api gw kwy" -e OPENAI_API_HOST="your api host url" -e OPENAI_API_KEY="not required" -p 3000:3000 chatbot-ui
 ```
 
 ## Running Locally
@@ -61,7 +20,7 @@ docker run -e OPENAI_API_KEY=xxxxxxxx -p 3000:3000 ghcr.io/mckaywrigley/chatbot-
 **1. Clone Repo**
 
 ```bash
-git clone https://github.com/mckaywrigley/chatbot-ui.git
+git clone https://github.com/cehh/chatbot-ui
 ```
 
 **2. Install Dependencies**
@@ -117,8 +76,4 @@ If you do not provide an OpenAI API key with `OPENAI_API_KEY`, users will have t
 
 If you don't have an OpenAI API key, you can get one [here](https://platform.openai.com/account/api-keys).
 
-## Contact
 
-If you have any questions, feel free to reach out to Mckay on [Twitter](https://twitter.com/mckaywrigley).
-
-[GCSE]: https://developers.google.com/custom-search/v1/overview
